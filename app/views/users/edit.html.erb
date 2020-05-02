@@ -1,0 +1,22 @@
+<%= form_for @user do |f| %>
+
+	<% if @user.errors.any? %>
+		<div id="the_error">
+			<h2><%= pluralize(@user.errors.count, "error") %> stoped this user from being saved:</h2>
+
+			<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%= f.label :username %>
+  <%= f.text_field :username, placeholder:"Username goes here"%><br><br>
+	<%= f.label :email %>
+	<%= f.text_field :email, placeholder: "example@example.com" %><br><br>
+	<%= f.label :password %>
+	<%= f.password_field :password %><br><br>
+	<%= f.submit "Submit" %>
+<% end %>
